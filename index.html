@@ -43,11 +43,11 @@ function demoResults(q,article,kind){
  const terms=q.trim().toLocaleLowerCase("fa").split(/\s+/).filter(Boolean);
  return docs.filter(d=>(!article||d.number.includes(article.trim()))&&(!kind||kind==="demo")&&(!terms.length||terms.some(t=>(d.title+" "+d.number+" "+d.body).toLocaleLowerCase("fa").includes(t))));
 }
-function apiBase(){return (localStorage.getItem("dadbanLegalSearchApi")||"").trim().replace(/\\/$/,"");}
+function apiBase(){return (localStorage.getItem("dadbanLegalSearchApi")||"").trim().replace(/\/$/,"");}
 function setApiStatus(message){$("apiStatus").textContent=message;}
 async function connectApi(){
- const base=$("apiUrl").value.trim().replace(/\\/$/,"");
- if(!/^https?:\\/\\//i.test(base)){setApiStatus("نشانی باید با https:// یا http:// شروع شود.");return false;}
+ const base=$("apiUrl").value.trim().replace(/\/$/,"");
+ if(!/^https?:\/\//i.test(base)){setApiStatus("نشانی باید با https:// یا http:// شروع شود.");return false;}
  $("apiConnect").disabled=true;setApiStatus("در حال بررسی اتصال...");
  try{
   const response=await fetch(base+"/health",{headers:{"Accept":"application/json"}});
