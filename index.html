@@ -80,6 +80,6 @@ $("searchForm").addEventListener("submit",async e=>{e.preventDefault();const q=$
 $("demoBtn").addEventListener("click",()=>{ $("q").value="";$("article").value="";$("kind").value="demo";render(demoResults("","","demo"),"نمونه");$("resultSection").scrollIntoView({behavior:"smooth",block:"start"});});
 $("clearBtn").addEventListener("click",()=>{$("q").value="";$("article").value="";$("kind").value="";$("resultSection").classList.add("hidden");});
 $("apiConnect").addEventListener("click",connectApi);
-const savedApi=apiBase();if(savedApi){$("apiUrl").value=savedApi;setApiStatus("نشانی API ذخیره شده است؛ برای بررسی دوباره «اتصال و بررسی» را بزن.");}
+const defaultApi="https://dadban-legal-search-api.onrender.com";const savedApi=apiBase();$("apiUrl").value=savedApi||defaultApi;if(savedApi){setApiStatus("نشانی API ذخیره شده است؛ در حال بررسی اتصال...");}else{setApiStatus("نشانی API نسخه آزمایشی تنظیم شده است؛ در حال بررسی اتصال...");}connectApi();
 </script>
 </body></html>
